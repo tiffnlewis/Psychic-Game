@@ -1,45 +1,37 @@
 
-var alphabetLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 var wins = 0;
 var losses = 0;
-var guessesLeft = 9;
-var guessesSoFar = [];
+var guessesLeft = 10;
+var guessesMade = [];
 var userGuess = null;
-var letterToBeGuessed = alphabetLetters[Math.floor(Math.random() * alphabetLetters.length)];
-console.log("Wins: " + wins + " Losses: " + losses + " GuessesLeft: " + guessesLeft + " Guesses so far: " + guessesSoFar + " Computer picked: " + letterToBeGuessed);
+var compGuess = letters[Math.floor(Math.random() * letters.length)];
 
 document.onkeyup = function (event) {
 
-  var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-
-  if (guessesSoFar.indexOf(userGuess) < 0 && alphabetLetters.indexOf(userGuess) >= 0) {
-    guessesSoFar[guessesSoFar.length] = userGuess;
-    guessesLeft--;
-  }
-
-  if (letterToBeGuessed == userGuess) {
+  if (compGuess == userGuess) {
     wins++;
-    guessesLeft = 9;
-    guessesSoFar = [];
-    letterToBeGuessed = alphabetLetters[Math.floor(Math.random() * alphabetLetters.length)];
-    console.log("Wins: " + wins + " Losses: " + losses + " GuessesLeft: " + guessesLeft + " Guesses so far: " + guessesSoFar + " Computer picked: " + letterToBeGuessed);
+    guessesLeft = 10;
+    guessesMade = [];
+  }
+  
+  if (compGuess != userGuess){
+    guessesMade = [];
   }
 
   if (guessesLeft == 0) {
     losses++;
-    guessesLeft = 9;
-    guessesSoFar = [];
-    letterToBeGuessed = alphabetLetters[Math.floor(Math.random() * alphabetLetters.length)];
-    console.log("Wins: " + wins + " Losses: " + losses + " GuessesLeft: " + guessesLeft + " Your Guesses: " + guessesSoFar + " Computer picked: " + letterToBeGuessed);
+    guessesLeft = 10;
+    guessesMade = [];
   }
 
   var html =
-    "<p><h1>The Psychic Game</h1></p>" +
-    "<p><h4>Guess what letter I am thinking of</h4></p>" +
-    "<p><h4>Wins: " + wins + "</h4></p>" +
-    "<p><h4>Losses: " + losses + "</h4></p>" +
-    "<p><h4>Guesses Left: " + guessesLeft + "</h4></p>" +
-    "<p><h4>Your Guesses: " + guessesSoFar + "</h4></p>";
-  document.querySelector("#game").innerHTML = html;
+    '<p><h1>The Psychic Game</h1></p>' +
+    '<p>Guess what letter I am thinking of</p>' +
+    '<p>Wins: ' + wins + '</p>' +
+    '<p>Losses: ' + losses + '</p>' +
+    '<p>Guesses Left: ' + guessesLeft + '</p>' +
+    '<p>Your Guesses: ' + guessesMade + '</p>' +
+  document.getElementbyId ('game');
 
 }
