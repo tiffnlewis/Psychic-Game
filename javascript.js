@@ -8,6 +8,8 @@ var userGuess = document.onkeyup;
 var compGuess = letters[Math.floor(Math.random() * letters.length)];
 
 document.onkeyup = function (event) {
+  
+  guessesMade.push(userGuess);
 
   if (compGuess == userGuess) {
     wins++;
@@ -15,8 +17,8 @@ document.onkeyup = function (event) {
     guessesMade = [];
   }
   
-  if (compGuess != userGuess){
-    guessesMade = [];
+  if (compGuess != userGuess) {
+    
   }
 
   if (guessesLeft == 0) {
