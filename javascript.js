@@ -18,6 +18,7 @@ document.onkeyup = function (event) {
   }
   
   if (compGuess != userGuess) {
+    guessesLeft--;
     
   }
 
