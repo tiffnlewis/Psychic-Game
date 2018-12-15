@@ -4,7 +4,7 @@ var wins = 0;
 var losses = 0;
 var guessesLeft = 10;
 var guessesMade = [];
-var userGuess = null;
+var userGuess = document.onkeyup;
 var compGuess = letters[Math.floor(Math.random() * letters.length)];
 
 document.onkeyup = function (event) {
@@ -31,7 +31,6 @@ document.onkeyup = function (event) {
     '<p>Wins: ' + wins + '</p>' +
     '<p>Losses: ' + losses + '</p>' +
     '<p>Guesses Left: ' + guessesLeft + '</p>' +
-    '<p>Your Guesses: ' + guessesMade + '</p>' +
-  document.getElementbyId ('game');
-
+    '<p>Your Guesses: ' + guessesMade + '</p>';
+document.getElementById("game").innerHTML = html;
 }
