@@ -9,6 +9,7 @@ var compGuess = letters[Math.floor(Math.random() * letters.length)];
 
 document.onkeyup = function (event) {
   
+  userGuess = event.key;
   guessesMade.push(userGuess);
 
   if (compGuess == userGuess) {
